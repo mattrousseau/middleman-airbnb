@@ -2,14 +2,31 @@
 title: Le Wagon - Middleman
 ---
 
-<div id="home">
-  <div class="home-content">
-    <%= image_tag "logo.png", width: "200" %>
-    <p>
-      Middleman is now running!
-    </p>
-    <p class="about">
-      <%= link_to "More about this template", "about.html" %>
-    </p>
+<%= partial "layouts/banner" %>
+
+<div class="wrapper-white">
+  <div class="container" id="home-flats">
+
+    <h2 class="text-center">Recent flats</h2>
+
+
+    <div class="row">
+      <% data.flats.each do |flat|  %>
+        <div class="col-xs-12 col-sm-4">
+          <!-- insert <div class="card"> -->
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://kitt.lewagon.com/placeholder/cities/<%= flat.city.downcase %>');">
+            <div class="card-description">
+              <h3><%= flat.name %>'s home</h3>
+              <p><%= flat.flat_desc %></p>
+            </div>
+            <div class="card-city">
+              <p><%= flat.city %>, <%= flat.country %></p>
+            </div>
+            <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/<%= flat.github_nickname %>">
+            <a class="card-link" href="#" ></a>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
